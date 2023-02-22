@@ -24,7 +24,7 @@ namespace Organization
         }
 
         public int ProjectIncome(string projectName)
-        {
+        {            
             int projectIncome = 0;
             bool valueParse = false;
             while (!valueParse)

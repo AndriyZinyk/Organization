@@ -4,8 +4,8 @@
     {
         static void Main(string[] args)
         {
-            Organization Strajdannia3 = new Organization("Strajdannia3", 1_000_000);
-            Strajdannia3.PositionList= new List<Position>();
+            Organization Strajdannia3 = new Organization("Strajdannia3", 1_000_000M);
+            Strajdannia3.PositionList = new List<Position>();
 
             Employee VladCherkys = new Employee("Vlad", "Cherkys");
             Employee AndriyZinyk = new Employee("Andriy", "Zinyk");
@@ -58,15 +58,39 @@
             Strajdannia3.PositionList.Add(student14);
             Strajdannia3.PositionList.Add(student15);
 
-            Strajdannia3.SalaryPayment();
+            string projectName = "Default name";
 
-            Console.WriteLine();
-            Strajdannia3.Budget += Strajdannia3.ProjectIncome("Our first project");
-            Console.WriteLine();
-            Console.Write("We've got an income and now our budget equals ");
-            Console.WriteLine(Strajdannia3.Budget);
+            while (true)
+            {
+                Console.WriteLine(new string('*',30));
+                Console.WriteLine("Select operation, please: \n" +
+                                "1 - Make salary payment \n" +
+                                "2 - Finish project and get income \n" +
+                                "3 - Exit");
 
-            Console.ReadLine();
+                string choice = Console.ReadLine();
+
+                if (choice == "1")
+                {
+                    Strajdannia3.SalaryPayment();
+                }                    
+                else if (choice == "2")
+                {
+                    Console.Write("Input project name: ");
+                    projectName = Console.ReadLine();
+                    Strajdannia3.Budget += Strajdannia3.ProjectIncome(projectName);
+                    Console.Write("We've got an income and now our budget equals ");
+                    Console.WriteLine(Strajdannia3.Budget);
+                }
+                else if (choice == "3")
+                {
+                    break;
+                }                    
+                else
+                {
+                    Console.WriteLine("Make validate choice, please");
+                }                                   
+            }
         }
     }
 }
